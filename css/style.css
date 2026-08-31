@@ -744,10 +744,10 @@ img {
 .bottom-sections-wrapper {
     padding: 60px 0;
     background-color: #080c0f;
-    border-top: none !important; /* Гарантированно убиваем рамку */
-    margin-top: -1px; /* Натягиваем блок на 1 пиксель вверх, закрывая любую щель */
+    border-top: none !important;
+    margin-top: -1px;
     position: relative;
-    z-index: 10; /* Убеждаемся, что он перекрывает стык */
+    z-index: 10;
 }
 
 .bottom-grid-container {

@@ -1,11 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* ---------------------------------------------
-       PREVENT NATIVE FORM SUBMISSION (INTAKE + CONTACT)
+    /* PREVENT NATIVE FORM SUBMISSION (INTAKE + CONTACT)
        Real submission will be wired up once the backend
        integration is finalized with the client's developer.
-       For now, just stop the page from reloading with a query string.
-    --------------------------------------------- */
+       For now, just stop the page from reloading with a query string */
     document.querySelectorAll("form.intake-form").forEach((form) => {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -15,9 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    /* ---------------------------------------------
-       MOBILE HAMBURGER MENU
-    --------------------------------------------- */
+    /* MOBILE HAMBURGER MENU */
     const hamburgerBtn = document.getElementById("hamburgerBtn");
     const mainNav = document.getElementById("mainNav");
     const navOverlay = document.getElementById("navOverlay");
@@ -65,11 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /* ---------------------------------------------
-       DROPDOWN MENUS (SERVICES / OUR PROCESS / RESOURCES)
+    /* DROPDOWN MENUS (SERVICES / OUR PROCESS / RESOURCES)
        Desktop: hover (handled purely in CSS).
-       Mobile/tablet (<=1024px): tap-to-toggle accordion.
-    --------------------------------------------- */
+       Mobile/tablet (<=1024px): tap-to-toggle accordion */
     const dropdownParents = document.querySelectorAll(".has-dropdown");
 
     dropdownParents.forEach((parent) => {
@@ -92,9 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    /* ---------------------------------------------
-       DRAG & DROP / CLICK-TO-BROWSE UPLOAD ZONE
-    --------------------------------------------- */
+    /* DRAG & DROP / CLICK-TO-BROWSE UPLOAD ZONE */
     const uploadZone = document.getElementById("uploadZone");
     const fileInput = document.getElementById("fileInput");
     const fileListEl = document.getElementById("uploadFileList");
@@ -148,10 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    /* ---------------------------------------------
-       SCROLL-REVEAL ANIMATION
-       (basic version for Day 1 — refined further on Day 3)
-    --------------------------------------------- */
+    /* SCROLL-REVEAL ANIMATION */
     const revealEls = document.querySelectorAll(".reveal");
 
     if ("IntersectionObserver" in window && revealEls.length) {
@@ -173,9 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
         revealEls.forEach((el) => el.classList.add("in-view"));
     }
 
-    /* ---------------------------------------------
-       Close mobile menu automatically if resized to desktop
-    --------------------------------------------- */
+    /* Close mobile menu automatically if resized to desktop */
     window.addEventListener("resize", function () {
         if (window.innerWidth > 1024) {
             closeMenu();
