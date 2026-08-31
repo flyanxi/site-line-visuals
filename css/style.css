@@ -2124,8 +2124,9 @@ img {
     }
 
     .hero-video {
-        transform: scale(1.35) !important;
+        transform: scale(1.1) !important;
         transform-origin: center center;
+        object-position: 50% 50%;
     }
 
     .hero-content {
