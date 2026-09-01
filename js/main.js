@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (window.innerWidth > 1024) closeMenu();
     });
 
-    /* SMOOTH-SCROLL FOR IN-PAGE ANCHOR LINKS (accounts for the sticky header) */
+    /* SMOOTH-SCROLL FOR IN-PAGE ANCHOR LINKS */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -156,13 +156,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    /* GENERIC MODAL SYSTEM */
+    /* GENERIC MODAL SYSTEM (RESTORED TO ORIGINAL CLEAN STATE) */
     function initModal({ modalId, closeId, triggerSelector }) {
         const modal = document.getElementById(modalId);
         if (!modal) return null;
 
         const closeBtn = closeId ? document.getElementById(closeId) : null;
-        const triggers = document.querySelectorAll(triggerSelector);
+        const triggers = triggerSelector ? document.querySelectorAll(triggerSelector) : [];
 
         function open(e) {
             if (e) e.preventDefault();
@@ -187,12 +187,57 @@ document.addEventListener("DOMContentLoaded", function () {
         return { open, close };
     }
 
-    initModal({
+    // Initialize "START YOUR PROJECT" modal (desktop) + new-tab fallback (mobile)
+    const projectModal = initModal({
         modalId: "projectModal",
         closeId: "projectModalClose",
-        triggerSelector: ".project-modal-trigger"
+        triggerSelector: null
     });
 
+    (function () {
+        const FORM_URL = "https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec";
+        const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+        const projectTriggers = document.querySelectorAll(".project-modal-trigger");
+
+        let formWindow = null;
+        let pollTimer = null;
+
+        function showReturnMessage() {
+            const toast = document.createElement("div");
+            toast.textContent = "Thanks for checking out the form! We'll be in touch soon.";
+            toast.style.cssText = "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#151a1e;color:#fff;padding:14px 22px;border-radius:8px;border:1px solid rgba(103,194,32,0.4);font-size:14px;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,0.5);max-width:90vw;text-align:center;";
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 6000);
+        }
+
+        function openFormNewTab() {
+            if (formWindow && !formWindow.closed) {
+                formWindow.focus();
+                return;
+            }
+            formWindow = window.open(FORM_URL, "_blank");
+            if (pollTimer) clearInterval(pollTimer);
+            pollTimer = setInterval(function () {
+                if (formWindow && formWindow.closed) {
+                    clearInterval(pollTimer);
+                    showReturnMessage();
+                }
+            }, 500);
+        }
+
+        projectTriggers.forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (!isMobile() && projectModal) {
+                    projectModal.open(e);
+                } else {
+                    openFormNewTab();
+                }
+            });
+        });
+    })();
+
+    // Initialize "REALTOR SERVICES" modal
     initModal({
         modalId: "realtorModal",
         closeId: "realtorModalClose",
@@ -239,41 +284,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-
-// --- Fit oversized Google Apps Script form into modal iframe ---
-document.addEventListener('DOMContentLoaded', function () {
-  var DESIGN_WIDTH = 460;
-  var wrap = document.querySelector('.gform-embed-wrap');
-  var iframe = document.getElementById('projectFormIframe');
-  if (!wrap || !iframe) return;
-
-  function fitFormIframe() {
-    var containerWidth = wrap.clientWidth;
-    var containerHeight = wrap.clientHeight;
-    if (!containerWidth || !containerHeight) return;
-    var scale = containerWidth / DESIGN_WIDTH;
-
-    iframe.style.width = DESIGN_WIDTH + 'px';
-    iframe.style.height = (containerHeight / scale) + 'px';
-    iframe.style.zoom = scale;
-  }
-
-  fitFormIframe();
-  window.addEventListener('resize', fitFormIframe);
-
-  var modal = document.getElementById('projectModal');
-  if (modal) {
-    new MutationObserver(fitFormIframe).observe(modal, { attributes: true, attributeFilter: ['class'] });
-  }
-});
-
-function fitFormIframe() {
-    var containerWidth = wrap.clientWidth;
-    var containerHeight = wrap.clientHeight;
-    if (!containerWidth || !containerHeight) return;
-    var scale = Math.min(containerWidth / DESIGN_WIDTH, 1.15);
-
-    iframe.style.width = DESIGN_WIDTH + 'px';
-    iframe.style.height = (containerHeight / scale) + 'px';
-    iframe.style.zoom = scale;
-}

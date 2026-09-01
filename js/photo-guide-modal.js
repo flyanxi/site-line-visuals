@@ -76,11 +76,15 @@
         const { overlay, closeBtn, tabs, trigger } = getEls();
         if (!overlay) return;
 
-        trigger.addEventListener("click", function () {
-            openModal();
-        });
+        if (trigger) {
+            trigger.addEventListener("click", function () {
+                openModal();
+            });
+        }
 
-        closeBtn.addEventListener("click", closeModal);
+        if (closeBtn) {
+            closeBtn.addEventListener("click", closeModal);
+        }
 
         overlay.addEventListener("click", function (e) {
             if (e.target === overlay) closeModal();
@@ -90,28 +94,32 @@
             if (e.key === "Escape" && overlay.classList.contains("open")) closeModal();
         });
 
-        tabs.addEventListener("click", function (e) {
-            const tab = e.target.closest(".pg-tab");
-            if (tab) renderRoom(tab.getAttribute("data-room"));
-        });
+        if (tabs) {
+            tabs.addEventListener("click", function (e) {
+                const tab = e.target.closest(".pg-tab");
+                if (tab) renderRoom(tab.getAttribute("data-room"));
+            });
+        }
 
         // Reference "Upload Image" button — content is re-rendered via
         // innerHTML on every room switch, so we delegate from the body
         // container instead of binding to elements that get replaced.
         const { body } = getEls();
-        body.addEventListener("click", function (e) {
-            const uploadBtn = e.target.closest("#refUploadBtn");
-            if (!uploadBtn) return;
-            const fileInput = uploadBtn.querySelector("#refFileInput");
-            if (fileInput) fileInput.click();
-        });
+        if (body) {
+            body.addEventListener("click", function (e) {
+                const uploadBtn = e.target.closest("#refUploadBtn");
+                if (!uploadBtn) return;
+                const fileInput = uploadBtn.querySelector("#refFileInput");
+                if (fileInput) fileInput.click();
+            });
 
-        body.addEventListener("change", function (e) {
-            if (e.target && e.target.id === "refFileInput" && e.target.files.length) {
-                const label = e.target.closest("#refUploadBtn").querySelector(".up-label");
-                if (label) label.textContent = e.target.files[0].name;
-            }
-        });
+            body.addEventListener("change", function (e) {
+                if (e.target && e.target.id === "refFileInput" && e.target.files.length) {
+                    const label = e.target.closest("#refUploadBtn").querySelector(".up-label");
+                    if (label) label.textContent = e.target.files[0].name;
+                }
+            });
+        }
 
         // Auto-open the guide the first time "Existing Home Listing" is selected
         document.addEventListener("cs:change", function (e) {

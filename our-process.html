@@ -67,11 +67,11 @@
                 </ul>
 
                 <!-- Mobile-only CTA inside the slide-out menu -->
-                <a href="#" class="btn btn-primary mobile-cta project-modal-trigger">START YOUR PROJECT</a>
+                <a href="https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec" class="btn btn-primary mobile-cta project-modal-trigger">START YOUR PROJECT</a>
             </nav>
 
             <!-- Desktop CTA -->
-            <a href="#" class="btn btn-primary desktop-cta project-modal-trigger">START YOUR PROJECT</a>
+            <a href="https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec" class="btn btn-primary desktop-cta project-modal-trigger">START YOUR PROJECT</a>
 
             <!-- Hamburger button (mobile) -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
@@ -171,19 +171,19 @@
 
     <!-- INTAKE FORM MODAL -->
     <div id="projectModal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 540px; padding: 0; background: transparent; border-radius: 12px; position: relative;">
-        
-            <span class="close-btn" id="projectModalClose" style="top: -40px; right: 0; color: #fff; z-index: 10;">&times;</span>
-            
-            <div style="position: relative; width: 100%; height: 550px; overflow: hidden; background: #fff; border-radius: 12px;">
-                <iframe 
-                    src="https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec" 
-                    frameborder="0" 
-                    scrolling="yes"
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: auto;">
-                </iframe>
+        <div class="modal-content form-modal-wrapper">
+            <div class="form-modal-inner">
+                <button id="projectModalClose" class="form-modal-close">&times;</button>
+                
+                <div class="form-modal-iframe-wrap">
+                    <iframe 
+                        src="https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec" 
+                        class="form-modal-iframe"
+                        scrolling="no"
+                        frameborder="0">
+                    </iframe>
+                </div>
             </div>
-
         </div>
     </div>
 

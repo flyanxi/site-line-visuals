@@ -36,7 +36,7 @@ body {
 html.no-scroll,
 body.no-scroll {
     overflow: hidden !important;
-    overscroll-behavior: none;
+    height: 100% !important;
 }
 
 /* Removing underline from all links */
@@ -2188,19 +2188,14 @@ img {
 /* MODAL WINDOW STYLES */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100dvh;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.85);
     z-index: 9999;
-    
-    display: block; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 60px 15px;
-    
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -2213,16 +2208,22 @@ img {
 
 .modal-content {
     position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
     width: 100%;
-    max-width: 500px;
+    max-width: 540px;
+    min-width: 0;
     margin: 0 auto;
-    padding: 15px;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
 }
 
 .close-btn {
     position: absolute;
-    top: 25px;
-    right: 35px;
+    top: 15px;
+    right: 15px;
     color: #888;
     font-size: 28px;
     font-weight: bold;
@@ -2325,11 +2326,167 @@ img {
     }
 }
 
-@media (max-width: 768px) {
-    .modal-overlay {
-        padding: 15px 2px;
+/* --- INTAKE FORM MODAL STYLES --- */
+.form-modal-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.form-modal-inner {
+    position: relative;
+    background-color: #050505;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    min-width: 0;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 46px;
+}
+
+.form-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: var(--text-white);
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.form-modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.form-modal-iframe-wrap {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 400px;
+    overflow: hidden;
+    padding: 0 14px;
+}
+
+.form-modal-iframe {
+    position: absolute;
+    top: 0;
+    left: 14px;
+    width: calc(100% - 28px);
+    height: calc(100% + 30px);
+    min-width: 0;
+    border: none;
+    display: block;
+}
+
+.modal-content.form-modal-wrapper {
+    max-width: 680px;
+}
+
+/* RESPONSIVE DESIGN  */
+
+/* --- TABLETS AND SMALL LAPTOPS (up to 1024px) --- */
+@media (max-width: 1024px) {
+    .page-hero h1 {
+        font-size: 3rem;
     }
-    .gform-embed-wrap {
-        height: 620px;
+    
+    .trust-features-row,
+    .footer-features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* --- Vertical tablets and large phones (up to 768px) --- */
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 60px 0;
+    }
+
+    .page-hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .page-hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .trust-features-row,
+    .footer-features,
+    .services-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-container {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-logo {
+        margin: 0 auto 30px auto;
+    }
+
+    .footer-features {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    .footer-tagline {
+        text-align: center;
+        margin-top: 40px;
+    }
+    
+    .footer-tagline a {
+        justify-content: center;
+    }
+
+    .service-detail-card {
+        padding: 25px 20px;
+    }
+}
+
+/* --- Mobile phones (up to 480px) --- */
+@media (max-width: 480px) {
+    
+    .cta-banner h2 {
+        font-size: 1.7rem;
+    }
+    
+    .cta-banner {
+        padding: 40px 20px;
+    }
+
+    .modal-overlay {
+        padding: 0;
+    }
+
+    .form-modal-inner {
+        border-radius: 0;
+        max-height: 100vh;
+    }
+
+    .form-modal-close {
+        top: 12px;
+        right: 15px;
     }
 }
