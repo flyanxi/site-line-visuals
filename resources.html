@@ -67,11 +67,11 @@
                 </ul>
 
                 <!-- Mobile-only CTA inside the slide-out menu -->
-                <a href="index.html#start-your-project" class="btn btn-primary mobile-cta">START YOUR PROJECT</a>
+                <a href="#" class="btn btn-primary mobile-cta project-modal-trigger">START YOUR PROJECT</a>
             </nav>
 
             <!-- Desktop CTA -->
-            <a href="index.html#start-your-project" class="btn btn-primary desktop-cta">START YOUR PROJECT</a>
+            <a href="#" class="btn btn-primary desktop-cta project-modal-trigger">START YOUR PROJECT</a>
 
             <!-- Hamburger button (mobile) -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
@@ -169,6 +169,72 @@
             <button type="button" class="pg-modal-close" id="pgModalClose" aria-label="Close">×</button>
             <div class="pg-modal-tabs" id="pgModalTabs"></div>
             <div class="pg-modal-body" id="pgModalBody"></div>
+        </div>
+    </div>
+
+    <!-- INTAKE FORM MODAL -->
+    <div id="projectModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 540px; padding: 0; background: transparent; border-radius: 12px; position: relative;">
+        
+            <span class="close-btn" id="projectModalClose" style="top: -40px; right: 0; color: #fff; z-index: 10;">&times;</span>
+            
+            <div style="position: relative; width: 100%; height: 550px; overflow: hidden; background: #fff; border-radius: 12px;">
+                <iframe 
+                    src="https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec" 
+                    frameborder="0" 
+                    scrolling="yes"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: auto;">
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- REALTOR / QUOTE BUILDER MODAL -->
+    <div id="realtorModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" id="realtorModalClose">&times;</span>
+            
+            <div class="intake-card">
+                <h3>SELECT SERVICES</h3>
+                <p>Build your custom package. Select the services you need for your property.</p>
+
+                <div class="services-list">
+                    <label class="service-option">
+                        <input type="checkbox" value="250" data-name="3D Model">
+                        <div class="so-info">
+                            <strong>3D Model</strong>
+                            <span>Photorealistic 3D model of the property</span>
+                        </div>
+                        <div class="so-price">$250</div>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="checkbox" value="400" data-name="VR Walkthrough">
+                        <div class="so-info">
+                            <strong>VR Walkthrough</strong>
+                            <span>Immersive virtual reality tour</span>
+                        </div>
+                        <div class="so-price">$400</div>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="checkbox" value="150" data-name="Drone Scanning">
+                        <div class="so-info">
+                            <strong>Drone Scanning</strong>
+                            <span>High-accuracy aerial mapping</span>
+                        </div>
+                        <div class="so-price">$150</div>
+                    </label>
+                </div>
+
+                <div class="quote-total">
+                    <span>Estimated Total:</span>
+                    <span id="quoteTotalValue">$0</span>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-full" id="quoteContinueBtn" style="margin-top: 25px;">CONTINUE</button>
+            </div>
         </div>
     </div>
 

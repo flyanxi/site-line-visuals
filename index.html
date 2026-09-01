@@ -127,7 +127,7 @@
 
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary project-modal-trigger">GET STARTED &gt;</a>
-                    <a href="#" class="btn btn-outline project-modal-trigger">REALTOR / EXISTING<br>HOME SERVICES &gt;</a>
+                    <a href="#" class="btn btn-outline realtor-modal-trigger">REALTOR / EXISTING<br>HOME SERVICES &gt;</a>
                 </div>
 
                 <button type="button" class="watch-video-btn" id="watchVideoBtn">
@@ -293,87 +293,68 @@
         </div>
     </section>
 
-    <!-- THE NEW PROJECT MODAL -->
+    <!-- INTAKE FORM MODAL -->
     <div id="projectModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 540px; padding: 0; background: transparent; border-radius: 12px; position: relative;">
+        
+            <span class="close-btn" id="projectModalClose" style="top: -40px; right: 0; color: #fff; z-index: 10;">&times;</span>
+            
+            <div style="position: relative; width: 100%; height: 550px; overflow: hidden; background: #fff; border-radius: 12px;">
+                <iframe 
+                    src="https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec" 
+                    frameborder="0" 
+                    scrolling="yes"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: auto;">
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- REALTOR / QUOTE BUILDER MODAL -->
+    <div id="realtorModal" class="modal-overlay">
         <div class="modal-content">
-            <span class="close-btn" id="projectModalClose">&times;</span>
+            <span class="close-btn" id="realtorModalClose">&times;</span>
             
             <div class="intake-card">
-                <h3>START YOUR PROJECT</h3>
-                <p>Tell us about your project and we'll bring your vision to life.</p>
+                <h3>SELECT SERVICES</h3>
+                <p>Build your custom package. Select the services you need for your property.</p>
 
-                <form class="intake-form">
-                    <div class="custom-select" data-name="projectType">
-                        <button type="button" class="cs-trigger">
-                            <span class="cs-label">Project Type</span>
-                            <span class="cs-arrow">▼</span>
-                        </button>
-                        <ul class="cs-options">
-                            <li data-value="new-construction">New Construction</li>
-                            <li data-value="renovation-remodel">Renovation / Remodel</li>
-                            <li data-value="existing-home">Existing Home Listing</li>
-                            <li data-value="commercial">Commercial Project</li>
-                            <li data-value="other">Other</li>
-                        </ul>
-                        <input type="hidden" name="projectType" value="">
-                    </div>
+                <div class="services-list">
+                    <label class="service-option">
+                        <input type="checkbox" value="250" data-name="3D Model">
+                        <div class="so-info">
+                            <strong>3D Model</strong>
+                            <span>Photorealistic 3D model of the property</span>
+                        </div>
+                        <div class="so-price">$250</div>
+                    </label>
 
-                    <input type="text" placeholder="Property Address">
+                    <label class="service-option">
+                        <input type="checkbox" value="400" data-name="VR Walkthrough">
+                        <div class="so-info">
+                            <strong>VR Walkthrough</strong>
+                            <span>Immersive virtual reality tour</span>
+                        </div>
+                        <div class="so-price">$400</div>
+                    </label>
 
-                    <div class="custom-select" data-name="projectStage">
-                        <button type="button" class="cs-trigger">
-                            <span class="cs-label">Project Stage</span>
-                            <span class="cs-arrow">▼</span>
-                        </button>
-                        <ul class="cs-options">
-                            <li data-value="pre-blueprint">Pre-Blueprint / Concept</li>
-                            <li data-value="blueprints-ready">Blueprints Ready</li>
-                            <li data-value="permitting">In Permitting</li>
-                            <li data-value="under-construction">Under Construction</li>
-                            <li data-value="completed">Completed / Existing</li>
-                        </ul>
-                        <input type="hidden" name="projectStage" value="">
-                    </div>
+                    <label class="service-option">
+                        <input type="checkbox" value="150" data-name="Drone Scanning">
+                        <div class="so-info">
+                            <strong>Drone Scanning</strong>
+                            <span>High-accuracy aerial mapping</span>
+                        </div>
+                        <div class="so-price">$150</div>
+                    </label>
+                </div>
 
-                    <div class="custom-select" data-name="buildTimeline">
-                        <button type="button" class="cs-trigger">
-                            <span class="cs-label">Estimated Build Timeline</span>
-                            <span class="cs-arrow">▼</span>
-                        </button>
-                        <ul class="cs-options">
-                            <li data-value="asap">ASAP</li>
-                            <li data-value="1-3-months">1-3 Months</li>
-                            <li data-value="3-6-months">3-6 Months</li>
-                            <li data-value="6-12-months">6-12 Months</li>
-                            <li data-value="just-exploring">Just Exploring</li>
-                        </ul>
-                        <input type="hidden" name="buildTimeline" value="">
-                    </div>
+                <div class="quote-total">
+                    <span>Estimated Total:</span>
+                    <span id="quoteTotalValue">$0</span>
+                </div>
 
-                    <input type="text" placeholder="Your Name">
-                    <input type="email" placeholder="Email">
-                    <input type="tel" placeholder="Phone">
-
-                    <button type="button" class="pg-trigger" id="pgTriggerBtn">
-                        <span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></span>
-                        Not sure what to photograph? View Photo Guide
-                    </button>
-
-                    <div class="upload-zone" id="uploadZone">
-                        <input type="file" id="fileInput" class="upload-input" multiple hidden>
-                        <span class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 .5 9H6a4 4 0 0 1-2-7.1"/><path d="M12 12v9M9 15l3-3 3 3"/></svg></span>
-                        <strong>UPLOAD BLUEPRINTS OR FILES</strong>
-                        <span class="upload-hint">Drag & drop files here or click to browse</span>
-                        <div class="upload-file-list" id="uploadFileList"></div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-full">SUBMIT PROJECT</button>
-
-                    <div class="form-security-note">
-                        <span class="fs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
-                        <span>Your information is secure and confidential.</span>
-                    </div>
-                </form>
+                <button type="button" class="btn btn-primary btn-full" id="quoteContinueBtn" style="margin-top: 25px;">CONTINUE</button>
             </div>
         </div>
     </div>
@@ -434,6 +415,6 @@
     <script src="js/custom-select.js?v=1788111069"></script>
     <script src="js/photo-guide-modal.js?v=1788111069"></script>
     <script src="js/watch-video.js?v=1788111069"></script>
-    <script src="js/main.js?v=1788111069"></script>
+    <script src="js/main.js?v=1788111070"></script>
 </body>
 </html>

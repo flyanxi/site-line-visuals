@@ -139,51 +139,103 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", function () {
         if (window.innerWidth > 1024) closeMenu();
     });
-});
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#' || !targetId) return;
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            e.preventDefault();
-            const headerOffset = 110; 
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY - headerOffset;
-            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-        }
-    });
-});
-
-// Logic for the "START YOUR PROJECT" modal window
-document.addEventListener('DOMContentLoaded', () => {
-    const projectModal = document.getElementById('projectModal');
-    const openModalBtns = document.querySelectorAll('.project-modal-trigger'); 
-    const projectModalClose = document.getElementById('projectModalClose');
-
-    openModalBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            projectModal.classList.add('active');
-            document.documentElement.classList.add("no-scroll");
-            document.body.classList.add('no-scroll');
+    /* SMOOTH-SCROLL FOR IN-PAGE ANCHOR LINKS (accounts for the sticky header) */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#' || !targetId) return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const headerOffset = 110;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            }
         });
     });
 
-    if(projectModalClose) {
-        projectModalClose.addEventListener('click', () => {
-            projectModal.classList.remove('active');
+    /* GENERIC MODAL SYSTEM */
+    function initModal({ modalId, closeId, triggerSelector }) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return null;
+
+        const closeBtn = closeId ? document.getElementById(closeId) : null;
+        const triggers = document.querySelectorAll(triggerSelector);
+
+        function open(e) {
+            if (e) e.preventDefault();
+            document.documentElement.classList.add("no-scroll");
+            document.body.classList.add("no-scroll");
+            modal.classList.add("active");
+        }
+
+        function close() {
+            modal.classList.remove("active");
             document.documentElement.classList.remove("no-scroll");
-            document.body.classList.remove('no-scroll');
+            document.body.classList.remove("no-scroll");
+        }
+
+        triggers.forEach((btn) => btn.addEventListener("click", open));
+        if (closeBtn) closeBtn.addEventListener("click", close);
+
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) close();
+        });
+
+        return { open, close };
+    }
+
+    initModal({
+        modalId: "projectModal",
+        closeId: "projectModalClose",
+        triggerSelector: ".project-modal-trigger"
+    });
+
+    initModal({
+        modalId: "realtorModal",
+        closeId: "realtorModalClose",
+        triggerSelector: ".realtor-modal-trigger"
+    });
+
+    /* REALTOR / QUOTE BUILDER */
+    const serviceOptions = document.querySelectorAll(".service-option");
+    const quoteTotalEl = document.getElementById("quoteTotalValue");
+
+    function updateQuoteTotal() {
+        let total = 0;
+        serviceOptions.forEach((opt) => {
+            const checkbox = opt.querySelector('input[type="checkbox"]');
+            if (!checkbox) return;
+            if (checkbox.checked) {
+                total += parseInt(checkbox.value, 10) || 0;
+                opt.classList.add("selected");
+            } else {
+                opt.classList.remove("selected");
+            }
+        });
+        if (quoteTotalEl) quoteTotalEl.textContent = `$${total}`;
+    }
+
+    serviceOptions.forEach((opt) => {
+        const checkbox = opt.querySelector('input[type="checkbox"]');
+        if (!checkbox) return;
+        checkbox.addEventListener("change", updateQuoteTotal);
+    });
+
+    const quoteContinueBtn = document.getElementById("quoteContinueBtn");
+    if (quoteContinueBtn) {
+        quoteContinueBtn.addEventListener("click", function () {
+            const selected = [];
+            serviceOptions.forEach((opt) => {
+                const checkbox = opt.querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    selected.push({ name: checkbox.dataset.name, price: checkbox.value });
+                }
+            });
+            console.log("Realtor quote — selected services:", selected, "Total:", quoteTotalEl ? quoteTotalEl.textContent : "$0");
         });
     }
 
-    window.addEventListener('click', (event) => {
-        if (event.target === projectModal) {
-            projectModal.classList.remove('active');
-            document.documentElement.classList.remove("no-scroll");
-            document.body.classList.remove('no-scroll');
-        }
-    });
 });
