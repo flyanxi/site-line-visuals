@@ -239,3 +239,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+// --- Fit oversized Google Apps Script form into modal iframe ---
+document.addEventListener('DOMContentLoaded', function () {
+  var DESIGN_WIDTH = 460;
+  var wrap = document.querySelector('.gform-embed-wrap');
+  var iframe = document.getElementById('projectFormIframe');
+  if (!wrap || !iframe) return;
+
+  function fitFormIframe() {
+    var containerWidth = wrap.clientWidth;
+    var containerHeight = wrap.clientHeight;
+    if (!containerWidth || !containerHeight) return;
+    var scale = containerWidth / DESIGN_WIDTH;
+
+    iframe.style.width = DESIGN_WIDTH + 'px';
+    iframe.style.height = (containerHeight / scale) + 'px';
+    iframe.style.zoom = scale;
+  }
+
+  fitFormIframe();
+  window.addEventListener('resize', fitFormIframe);
+
+  var modal = document.getElementById('projectModal');
+  if (modal) {
+    new MutationObserver(fitFormIframe).observe(modal, { attributes: true, attributeFilter: ['class'] });
+  }
+});
+
+function fitFormIframe() {
+    var containerWidth = wrap.clientWidth;
+    var containerHeight = wrap.clientHeight;
+    if (!containerWidth || !containerHeight) return;
+    var scale = Math.min(containerWidth / DESIGN_WIDTH, 1.15);
+
+    iframe.style.width = DESIGN_WIDTH + 'px';
+    iframe.style.height = (containerHeight / scale) + 'px';
+    iframe.style.zoom = scale;
+}

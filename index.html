@@ -297,14 +297,15 @@
     <div id="projectModal" class="modal-overlay">
         <div class="modal-content" style="max-width: 540px; padding: 0; background: transparent; border-radius: 12px; position: relative;">
         
-            <span class="close-btn" id="projectModalClose" style="top: -40px; right: 0; color: #fff; z-index: 10;">&times;</span>
+            <span class="close-btn" id="projectModalClose" style="position: fixed; top: 15px; right: 15px; color: #fff; z-index: 10001; background: rgba(0,0,0,0.55); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1;">&times;</span>
             
-            <div style="position: relative; width: 100%; height: 550px; overflow: hidden; background: #fff; border-radius: 12px;">
+            <div class="gform-embed-wrap" style="position: relative; width: 100%; height: 550px; overflow: hidden; background: #fff; border-radius: 12px;">
                 <iframe 
+                    id="projectFormIframe"
                     src="https://script.google.com/macros/s/AKfycbw3oOhSkqdaFSNwGbzgCzqsGBJtpe77_Hhgp17k5NKNz40dq8O1Wns6kMGoqOn_5LAN/exec" 
                     frameborder="0" 
-                    scrolling="yes"
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: auto;">
+                    scrolling="no"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: auto; overflow: hidden;">
                 </iframe>
             </div>
 
