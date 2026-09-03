@@ -17,7 +17,6 @@
             document.body.style.overflow = "hidden";
             video.currentTime = 0;
             video.play().catch(() => {
-                // Autoplay might be blocked; user can press play manually.
             });
         }
 
