@@ -29,9 +29,6 @@
                     <li><a href="index.html" class="active">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
 
-                    <!-- PACKAGES & PRICING -->
-                    <li><a href="packages.html">PACKAGES & PRICING</a></li>
-
                     <!-- SERVICES dropdown -->
                     <li class="has-dropdown">
                         <a href="services.html" class="dropdown-toggle">SERVICES <span class="arrow">▼</span></a>
@@ -44,6 +41,10 @@
                             <li><a href="services.html#custom-solutions">Custom Solutions <span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2Z"/><circle cx="12" cy="12" r="3"/></svg></span></a></li>
                         </ul>
                     </li>
+
+                    <li><a href="packages.html">PACKAGES & PRICING</a></li>
+
+                    <li><a href="realtor.html">REALTOR / EXISTING HOME</a></li>
 
                     <!-- OUR PROCESS dropdown -->
                     <li class="has-dropdown">
@@ -67,9 +68,6 @@
                             <li><a href="resources.html#blog">Blog <span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg></span></a></li>
                         </ul>
                     </li>
-
-                    <!-- REALTOR / EXISTING HOME -->
-                    <li><a href="realtor.html">REALTOR / EXISTING HOME</a></li>
 
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
@@ -114,8 +112,10 @@
 
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary project-modal-trigger">START YOUR PROJECT &gt;</a>
-                    <a href="packages.html" class="btn btn-secondary">VIEW PACKAGES &gt;</a>
-                    <a href="realtor.html" class="btn btn-outline realtor-modal-trigger">REALTOR / EXISTING<br>HOME SERVICES &gt;</a>
+                    <div class="secondary-links">
+                        <a href="realtor.html" class="simple-link">REALTOR / EXISTING<br>HOME SERVICES &gt;</a>
+                        <a href="packages.html" class="simple-link">VIEW PACKAGES &gt;</a>
+                    </div>
                 </div>
 
                 <button type="button" class="watch-video-btn" id="watchVideoBtn">
@@ -128,35 +128,55 @@
                 <!-- NEW: 5 Approved Feature Cards -->
                 <div class="services-grid">
                     <div class="service-card reveal">
+                            <div class="service-image">
+                                <img src="images/s5.jpeg" alt="See it before you build it" loading="lazy">
+                            </div>
+                            <div class="service-content">
+                                <h3>SEE IT BEFORE YOU BUILD IT</h3>
+                                <p>Plans become an understandable 3D and VR experience.</p>
+                            </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="service-image">
+                            <img src="images/s4.jpeg" alt="Walk it at full scale" loading="lazy">
+                         </div>
                         <div class="service-content">
-                            <h3>SEE IT BEFORE YOU BUILD IT</h3>
-                            <p>Plans become an understandable 3D and VR experience.</p>
+                         <h3>WALK IT AT FULL SCALE</h3>
+                         <p>Experience room size, flow, sight lines, windows, stairs, kitchens, and major relationships before construction.</p>
                         </div>
                     </div>
+
                     <div class="service-card reveal">
-                        <div class="service-content">
-                            <h3>WALK IT AT FULL SCALE</h3>
-                            <p>Experience room size, flow, sight lines, windows, stairs, kitchens, and major relationships before construction.</p>
+                        <div class="service-image">
+                            <img src="images/s3.jpeg" alt="Document it while you build" loading="lazy">
                         </div>
-                    </div>
-                    <div class="service-card reveal">
                         <div class="service-content">
                             <h3>DOCUMENT IT WHILE YOU BUILD</h3>
                             <p>Capture selected framing, rough-ins, insulation, exterior/site, and progress stages.</p>
                         </div>
                     </div>
+
                     <div class="service-card reveal">
+                        <div class="service-image">
+                         <img src="images/s2.jpeg" alt="Revisit what gets covered" loading="lazy">
+                        </div>
                         <div class="service-content">
                             <h3>REVISIT WHAT GETS COVERED</h3>
                             <p>Return to captured construction stages after walls and finishes conceal important components.</p>
                         </div>
                     </div>
-                    <div class="service-card reveal">
-                        <div class="service-content">
-                            <h3>KEEP AN ORGANIZED PROPERTY RECORD</h3>
-                            <p>Receive an organized visual history based on the package and approved scope.</p>
-                        </div>
-                    </div>
+
+                     <div class="service-card reveal">
+                         <div class="service-image">
+                             <img src="images/s1.jpeg" alt="Keep an organized property record" loading="lazy">
+                         </div>
+                         <div class="service-content">
+                             <h3>KEEP AN ORGANIZED PROPERTY RECORD</h3>
+                             <p>Receive an organized visual history based on the package and approved scope.</p>
+                         </div>
+                     </div>
+                    
                 </div>
             </div>
 
@@ -318,41 +338,26 @@
     <!-- FOOTER SECTION -->
     <footer class="site-footer">
         <div class="container footer-container">
+            
             <div class="footer-logo">
                 <img src="images/logo.png" alt="Site Line Visuals" width="160">
-            </div>
-            <div class="footer-features">
-                <div class="footer-feat">
-                    <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
-                    <span>VISUALIZE BEFORE<br>YOU BUILD</span>
-                </div>
-                <div class="footer-feat">
-                    <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-                    <span>COLLABORATE<br>WITH CONFIDENCE</span>
-                </div>
-                <div class="footer-feat">
-                    <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2Z"/><circle cx="12" cy="12" r="3"/></svg></span>
-                    <span>REDUCE COSTLY<br>MISTAKES</span>
-                </div>
-                <div class="footer-feat">
-                    <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 21-2-2M17 11a4 4 0 1 0 0-8"/></svg></span>
-                    <span>BUILD BETTER<br>TOGETHER</span>
-                </div>
-            </div>
-            
-            <div class="footer-tagline">
-                <p>WALK IT BEFORE YOU BUILD IT.</p>
-                <!-- Обновленная ссылка футера на реальный домен -->
-                <a href="https://sitelinevisuals.com" target="_blank">SITELINEVISUALS.COM</a>
+                <p class="footer-value-line">
+                    See it before you build it. Document it while you build it. Revisit it after it's built.
+                </p>
             </div>
 
-            <!-- Mandatory Legal/Support Links -->
             <div class="footer-legal-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms</a>
                 <a href="#">Accessibility / Contact</a>
                 <a href="#">Service Limitations</a>
             </div>
+            
+            <div class="footer-tagline">
+                <p>WALK YOUR HOME BEFORE IT'S BUILT.</p>
+                <a href="https://sitelinevisuals.com" target="_blank">SITELINEVISUALS.COM</a>
+            </div>
+
         </div>
     </footer>
 

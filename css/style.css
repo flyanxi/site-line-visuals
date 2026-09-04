@@ -81,6 +81,41 @@ img {
     -webkit-appearance: none;
 }
 
+/* text links */
+.simple-link {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.4;
+    text-align: left;
+    transition: opacity 0.2s ease, color 0.2s ease; 
+}
+
+.simple-link:hover {
+    color: #7ED957;
+}
+
+.secondary-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .secondary-links {
+        gap: 15px;
+        justify-content: flex-start;
+    }
+    
+    .secondary-links .simple-link {
+        font-size: 11px;
+    }
+}
+
 .btn:focus {
     outline: none;
 }
@@ -944,21 +979,35 @@ img {
 }
 
 /* FOOTER */
+
+.footer-value-line {
+    color: rgba(255, 255, 255, 0.45); 
+    font-size: 13px;
+    margin-top: 15px;
+    max-width: 250px;
+    line-height: 1.5;
+    text-align: left;
+}
+
 .site-footer {
     background-color: #0b1014;
     padding: 20px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-container {
+.site-footer .footer-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    max-width: none;
-    padding-left: 32px;
-    padding-right: 32px;
+    align-items: flex-end; 
+    gap: 20px; 
+    max-width: 100% !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+
+.footer-logo {
+    flex: 1;
+    max-width: 320px;
 }
 
 .footer-logo img {
@@ -997,7 +1046,10 @@ img {
 }
 
 .footer-tagline {
+    flex: 1;
+    max-width: 320px;
     text-align: right;
+    margin-bottom: 8px;
 }
 
 .footer-tagline p {
@@ -2597,14 +2649,14 @@ img {
 
 /* Legal links in the footer */
 .footer-legal-links {
-    flex: 1 1 100%;
-    margin-top: 30px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 .footer-legal-links a {
@@ -2618,7 +2670,16 @@ img {
 }
 
 .footer-legal-links a:hover {
-    color: var(--primary-green, #67c220);
+    color: var(--primary-green);
+}
+
+/* On tablets and phones, the links will move to the bottom so as not to break the layout. */
+@media (max-width: 991px) {
+    .footer-legal-links {
+        order: 3;
+        flex: 1 1 100%;
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2645,7 +2706,7 @@ img {
   }
 }
 
-/* --- Настройка шапки для десктопа --- */
+/* --- Configuring the desktop header --- */
 @media (min-width: 1025px) {
   .header .container {
     max-width: 100% !important;
@@ -2653,27 +2714,97 @@ img {
     padding-right: 40px !important;
   }
 
-  /* Распределяем элементы: по краям и в центре */
   .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  /* Помещаем меню в центр свободного пространства */
   .main-nav {
     flex-grow: 1;
     display: flex;
     justify-content: center;
   }
 
-  /* Настраиваем пункты меню: запрещаем перенос слов и делаем адаптивные отступы */
   .nav-list {
-    gap: 2vw !important; /* Расстояние между пунктами будет подстраиваться под размер экрана */
+    gap: 2vw !important;
   }
 
   .nav-list a {
     font-size: 13px !important;
     white-space: nowrap !important;
   }
+}
+
+/* Simple centered mobile footer */
+@media (max-width: 768px) {
+    .site-footer .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        gap: 30px; 
+    }
+
+    .footer-logo {
+        order: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-value-line {
+        margin: 15px 0 0 0;
+        text-align: center !important;
+    }
+
+    .footer-tagline {
+        order: 2;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: center !important;
+    }
+
+    .footer-tagline p,
+    .footer-tagline a {
+        text-align: center !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    .footer-tagline p {
+        margin-bottom: 8px !important;
+    }
+
+    .footer-legal-links {
+        order: 3;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+.service-card .service-image {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+}
+
+.service-card .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
 }
