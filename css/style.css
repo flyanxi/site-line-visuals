@@ -2622,18 +2622,16 @@ img {
 }
 
 @media (max-width: 768px) {
-  /* Переводим сетку на 2 колонки */
   .audience-icons-row {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 8px !important;
   }
 
-  /* Последнюю (пятую) карточку растягиваем на обе колонки и центрируем */
   .audience-icons-row .aud-item:nth-child(5) {
     grid-column: 1 / -1;
-    max-width: 65%; /* Делаем её аккуратной ширины, чтобы не была слишком растянутой */
-    margin: 0 auto; /* Центрируем */
+    max-width: 65%;
+    margin: 0 auto;
   }
 
   .audience-icons-row .aud-item {
@@ -2644,5 +2642,38 @@ img {
     font-size: 11px;
     line-height: 1.25;
     white-space: normal;
+  }
+}
+
+/* --- Настройка шапки для десктопа --- */
+@media (min-width: 1025px) {
+  .header .container {
+    max-width: 100% !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  /* Распределяем элементы: по краям и в центре */
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Помещаем меню в центр свободного пространства */
+  .main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Настраиваем пункты меню: запрещаем перенос слов и делаем адаптивные отступы */
+  .nav-list {
+    gap: 2vw !important; /* Расстояние между пунктами будет подстраиваться под размер экрана */
+  }
+
+  .nav-list a {
+    font-size: 13px !important;
+    white-space: nowrap !important;
   }
 }
