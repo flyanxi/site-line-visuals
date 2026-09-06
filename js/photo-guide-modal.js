@@ -99,6 +99,12 @@
                 const tab = e.target.closest(".pg-tab");
                 if (tab) renderRoom(tab.getAttribute("data-room"));
             });
+            tabs.addEventListener("wheel", function (e) {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    this.scrollLeft += e.deltaY;
+                }
+            });
         }
 
         // Reference "Upload Image" button — content is re-rendered via

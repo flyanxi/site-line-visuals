@@ -2,23 +2,95 @@
  * Data source for the reusable "Photo Guide" component.
  * Add a new room by pushing another object into ROOM_GUIDES —
  * the component in photo-guide.js will render it automatically.
+ *
+ * NOTE: room.image paths below follow the existing "images/<key>-art.png"
+ * naming convention used by the original bathroom/livingroom entries.
+ * Confirm these image files actually exist in /images before launch —
+ * missing ones will just show a broken image icon inside the guide.
  */
 const ROOM_GUIDES = {
-    bathroom: {
-        title: "BATHROOM",
+    kitchen: {
+        title: "KITCHEN",
         titleAccent: "PHOTO GUIDE",
-        image: "images/bathroom-art.png",
-        imageAlt: "Bathroom Reference",
-        showReference: true,
+        image: "images/kitchen-art.png",
+        imageAlt: "Kitchen Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Cabinetry & countertops",
+            "Backsplash photo",
+            "Appliances photo",
+            "Lighting photo",
+            "Island/peninsula (if applicable)"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    fullbath: {
+        title: "FULL BATH",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q10.jpeg",
+        imageAlt: "Full Bathroom Reference",
+        showReference: false,
         items: [
             "Overall room photo",
             "Flooring photo",
             "Wall/paint color photo",
             "Vanity & counters",
-            "Window treatment photo",
-            "Ceiling/architecture photo",
+            "Shower/tub area",
+            "Tile/finish detail",
             "Lighting photo",
-            "Built-in or feature photo"
+            "Fixtures (faucet, mirror)"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    halfbath: {
+        title: "HALF BATH",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q12.jpeg",
+        imageAlt: "Half Bathroom Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Vanity & sink",
+            "Lighting photo",
+            "Fixtures (faucet, mirror)"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    primarybath: {
+        title: "PRIMARY BATH",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q11.jpeg",
+        imageAlt: "Primary Bathroom Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Dual vanity & counters",
+            "Shower/tub area",
+            "Tile/finish detail",
+            "Lighting photo",
+            "Fixtures & hardware"
         ],
         tips: [
             "Use good lighting",
@@ -32,7 +104,7 @@ const ROOM_GUIDES = {
         titleAccent: "PHOTO GUIDE",
         image: "images/livingroom-art.png",
         imageAlt: "Living Room Reference",
-        showReference: true,
+        showReference: false,
         items: [
             "Overall room photo",
             "Flooring photo",
@@ -42,6 +114,156 @@ const ROOM_GUIDES = {
             "Ceiling/architecture photo",
             "Lighting photo",
             "Built-in or feature photo"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    primarybedroom: {
+        title: "PRIMARY BEDROOM",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q5.jpeg",
+        imageAlt: "Primary Bedroom Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Window treatment photo",
+            "Closet/storage area",
+            "Ceiling/architecture photo",
+            "Lighting photo",
+            "Built-in or feature photo"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    bedroom: {
+        title: "BEDROOM",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q4.jpeg",
+        imageAlt: "Bedroom Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Window treatment photo",
+            "Closet/storage area",
+            "Lighting photo"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    homeoffice: {
+        title: "HOME OFFICE",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q3.jpeg",
+        imageAlt: "Home Office Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Built-in shelving/desk area",
+            "Window treatment photo",
+            "Lighting photo"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    mediaroom: {
+        title: "MEDIA ROOM",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q2.jpeg",
+        imageAlt: "Media Room Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Wiring/equipment area",
+            "Lighting/blackout treatment",
+            "Built-in or feature photo"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    wetbar: {
+        title: "WET BAR",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q1.jpeg",
+        imageAlt: "Wet Bar Reference",
+        showReference: false,
+        items: [
+            "Overall room photo",
+            "Flooring photo",
+            "Wall/paint color photo",
+            "Cabinetry & countertops",
+            "Sink & fixtures",
+            "Appliance/fridge area",
+            "Lighting photo"
+        ],
+        tips: [
+            "Use good lighting",
+            "Hold camera level",
+            "Include entire area",
+            "Take photos clearly"
+        ]
+    },
+    exteriorelevations: {
+        title: "EXTERIOR ELEVATIONS",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/q9.jpeg",
+        imageAlt: "Exterior Elevations Reference",
+        showReference: false,
+        items: [
+            "Front elevation photo",
+            "Rear elevation photo",
+            "Left side elevation photo",
+            "Right side elevation photo",
+            "Roofline photo",
+            "Entry/door detail photo",
+            "Siding/finish material photo"
+        ],
+        tips: [
+            "Shoot in daylight when possible",
+            "Stand far enough back to fit the full elevation",
+            "Hold camera level",
+            "Take photos clearly"
+        ]
+    },
+    additionalspaces: {
+        title: "ADDITIONAL SPACES",
+        titleAccent: "PHOTO GUIDE",
+        image: "images/additionalspaces-art.png",
+        imageAlt: "Additional Spaces Reference",
+        showReference: false,
+        items: [
+            "Overall room/area photo",
+            "Flooring photo",
+            "Wall/finish photo",
+            "Special features or fixtures",
+            "Lighting photo"
         ],
         tips: [
             "Use good lighting",
