@@ -12,7 +12,7 @@ const ROOM_GUIDES = {
     kitchen: {
         title: "KITCHEN",
         titleAccent: "PHOTO GUIDE",
-        image: "images/kitchen-art.png",
+        image: "images/q14.png",
         imageAlt: "Kitchen Reference",
         showReference: false,
         items: [
@@ -102,7 +102,7 @@ const ROOM_GUIDES = {
     livingroom: {
         title: "LIVING ROOM",
         titleAccent: "PHOTO GUIDE",
-        image: "images/livingroom-art.png",
+        image: "images/q13.png",
         imageAlt: "Living Room Reference",
         showReference: false,
         items: [
